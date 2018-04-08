@@ -1,0 +1,63 @@
+﻿@model IEnumerable<StaffViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="well">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="date" name="date" class="form-control">
+                <span class="input-group-btn">
+                    <input type="submit" value="Send Date" class="btn btn-primary" />
+                </span>
+            </div>
+        </div>
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateWork)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullSalary)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateWork)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullSalary)
+            </td>
+        </tr>
+
+    }
+    <tr>
+            <td>
+            </td>
+            <td>
+                <span class="label label-primary">Total Salary:</span>
+            </td>
+            <td>
+                <span class="label label-primary">@ViewData["TotalSalary"]</span> 
+            </td>
+        </tr>
+</table>
+
+<div class="text-center">
+    @Html.ActionLink("Add new staff", "AddStaff")
+</div>
+
